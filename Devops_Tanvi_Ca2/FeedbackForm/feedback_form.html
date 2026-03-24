@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Feedback Form</title>
+
+    <!-- External CSS -->
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- Internal CSS -->
+    <style>
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        .required {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>Student Feedback Form</h1>
+
+    <div id="successMessage" class="success">Form submitted successfully!</div>
+
+    <form id="feedbackForm">
+
+        <label>Student Name <span class="required">*</span></label>
+        <input type="text" id="studentName">
+        <div id="nameError" class="error"></div>
+
+        <label>Email <span class="required">*</span></label>
+        <input type="text" id="email">
+        <div id="emailError" class="error"></div>
+
+        <label>Mobile Number <span class="required">*</span></label>
+        <input type="text" id="mobile">
+        <div id="mobileError" class="error"></div>
+
+        <label>Department <span class="required">*</span></label>
+        <select id="department">
+            <option value="">Select</option>
+            <option value="cse">CSE</option>
+            <option value="it">IT</option>
+            <option value="me">ME</option>
+            <option value="ece">ECE</option>
+        </select>
+        <div id="departmentError" class="error"></div>
+
+        <label>Gender <span class="required">*</span></label>
+        <input type="radio" name="gender" value="male"> Male
+        <input type="radio" name="gender" value="female"> Female
+        <input type="radio" name="gender" value="other"> Other
+        <div id="genderError" class="error"></div>
+
+        <label>Feedback Comments <span class="required">*</span></label>
+        <textarea id="feedback"></textarea>
+        <div id="feedbackError" class="error"></div>
+
+        <button type="submit" id="submitBtn">Submit</button>
+        <button type="reset" id="resetBtn">Reset</button>
+
+    </form>
+</div>
+
+<script src="validation.js"></script>
+
+</body>
+</html>
