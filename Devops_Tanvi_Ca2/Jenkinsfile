@@ -1,0 +1,47 @@
+pipeline {
+    agent any
+
+    environment {
+        JAVA_HOME = "C:\\Program Files\\Java\\jdk-21"
+        PATH = "${JAVA_HOME}\\bin;${env.PATH}"
+    }
+
+    stages {
+
+        stage('Clone Repository') {
+            steps {
+                git branch: 'main',
+                    url: 'https://github.com/Tanvib24/Devops_CA2.git'
+            }
+        }
+
+        stage('Compile Java') {
+            steps {
+                bat '''
+                javac -version
+                javac -cp ".;Devops_CA2\lib\\*" -d bin Devops_CA2\\src\\com\\feedback\\tests\\FeedbackTest.java
+                '''
+            }
+        }
+
+        stage('Run Selenium Test') {
+            steps {
+                bat '''
+                java -version
+                java -cp ".;Devops_CA2\lib\\*;bin" com.feedback.tests.FeedbackTest
+                '''
+            }
+        }
+
+    }
+
+    post {
+        success {
+            echo 'Build SUCCESS - All Selenium Tests Passed'
+        }
+
+        failure {
+            echo 'Build FAILED - Check Console Output'
+        }
+    }
+}
